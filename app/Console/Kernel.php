@@ -12,7 +12,7 @@ class Kernel extends ConsoleKernel
      *
      * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
      * @return void
-     */m
+     */
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
