@@ -1,1 +1,1 @@
-require('./bootstrap');m
+require('./bootstrap');
