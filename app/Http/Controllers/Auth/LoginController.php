@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -36,5 +38,19 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function login(Request $request){
+        $request->validate([
+            'email'=>'required',
+            'password'=> 'required',
+        ]);
+
+        $type = filter_var($request->get('email'), FILTER_VALIDATE_EMAIL)? 'email':'username';
+
+        $guard= Auth::guard()->attempt(array($type=>$request->get('email'),'password'=>$request->get('password')),$request->boolean('remember'));
+        if ($guard){
+            return redirect()->route('dashboardSchool');
+        }
     }
 }

@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -19,8 +21,8 @@ class DatabaseSeeder extends Seeder
          * Seeder user
          */
         $user = [
-            ['name' => 'Admin', 'email' => 'admin@schoolhelp.com', 'password' => bcrypt('admin'), 'level_user' => 'master_admin'],
+            'name' => 'Admin', 'email' => 'admin@schoolhelp.com', 'password' => Hash::make('admin'), 'level_user' => 'master_admin', 'username' => 'masteradmin'
         ];
-        DB::table('users')->insert($user);
+        User::create($user);
     }
 }

@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>SchoolHelp</title>
     <link rel="icon" href="{{asset('admin/dist/img/schoolHelp logo kotak.png')}}">
 
     <!-- Scripts -->
