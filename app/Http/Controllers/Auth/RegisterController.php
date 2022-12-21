@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\mVolunteer;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -60,6 +61,9 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'username' => ['required', 'string', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'phone' => ['required', 'string'],
+            'birth_date' => ['required', 'string'],
+            'address' => ['required', 'string'],
         ]);
     }
 
@@ -67,15 +71,27 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\Models\User
+     * @return \Illuminate\Http\RedirectResponse
      */
     protected function create(array $data)
     {
-        return User::create([
+        $birth_date = \Carbon\Carbon::parse($data['birth_date'])->format('Y-m-d H:i:s');
+        $volunteer = mVolunteer::create([
+            'vol_name' => $data['name'],
+            'vol_phone_no' => $data['phone'],
+            'vol_birth_date' => $birth_date,
+            'vol_address' => $data['address'],
+            'vol_email' => $data['email'],
+        ]);
+
+        User::create([
+            'id_volunteer' => $volunteer->id_volunteer,
             'name' => $data['name'],
             'email' => $data['email'],
             'username' => $data['username'],
             'password' => Hash::make($data['password']),
         ]);
+
+        return redirect()->route('dashboardSchool');
     }
 }

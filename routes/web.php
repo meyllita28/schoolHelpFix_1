@@ -35,3 +35,5 @@ Route::post('/manage-users/update/{id}', [App\Http\Controllers\Users::class, 'up
 Route::get('/manage-users/delete/{id}', [App\Http\Controllers\Users::class, 'destroy'])->name('deleteUserAccount');
 
 Route::post('/register-school-admin', [App\Http\Controllers\HomeController::class, 'createSchool'])->name('registerSchoolAdmin');
+
+Route::post('/register-volunteer', [App\Http\Controllers\RegisterVolunteer::class, 'store'])->name('registerVolunteer');

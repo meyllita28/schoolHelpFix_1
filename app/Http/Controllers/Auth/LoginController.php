@@ -52,5 +52,8 @@ class LoginController extends Controller
         if ($guard){
             return redirect()->route('dashboardSchool');
         }
+        else{
+            return redirect()->back()->withErrors(['msg' => 'Account not exist / password is wrong']);;
+        }
     }
 }
