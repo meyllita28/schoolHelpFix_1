@@ -4,23 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class mVolunteer extends Model
+class mResourceRequest extends Model
 {
     use HasFactory;
     use SoftDeletes;
     protected $dates = ['deleted_at'];
-    protected $table = 'volunteer';
-    protected $primaryKey = 'id_volunteer';
+    protected $table = 'resource_request';
+    protected $primaryKey = 'id_resource_request';
     protected $fillable = [
-        'vol_name',
-        'vol_phone_no',
-        'vol_birth_date',
-        'vol_address',
-        'vol_email',
-        'vol_occupation',
+        'res_resource_type',
+        'res_number_required',
     ];
 
     public function getUpdatedAtAttribute()

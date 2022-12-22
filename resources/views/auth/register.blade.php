@@ -42,9 +42,9 @@
                         <div class="row mb-3">
                             <label for="birth_date" class="col-md-4 col-form-label justify-content-end d-flex">Date of Birth:</label>
                             <div class="col-md-6">
-                                <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                                <div class="input-group date" id="reservationdate" data-target-input="nearest" data-target="#reservationdate" data-toggle="datetimepicker">
                                     <input type="text" class="form-control datetimepicker-input" id="birth_date" name="birth_date" value="{{ old('birth_date') }}" data-target="#reservationdate"/>
-                                    <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                                    <div class="input-group-append" >
                                         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                     </div>
                                 </div>
@@ -59,6 +59,20 @@
                                 <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="name" autofocus>
 
                                 @error('address')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="occupation" class="col-md-4 col-form-label justify-content-end d-flex">{{ __('Occupation') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="occupation" type="text" class="form-control @error('occupation') is-invalid @enderror" name="occupation" value="{{ old('occupation') }}" required autocomplete="occupation" autofocus>
+
+                                @error('occupation')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

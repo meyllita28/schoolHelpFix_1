@@ -19,6 +19,7 @@ class RegisterVolunteer extends Controller
             'phone' => ['required', 'string'],
             'birth_date' => ['required', 'string'],
             'address' => ['required', 'string'],
+            'occupation' => ['required', 'string'],
         ]);
 
         $birth_date = \Carbon\Carbon::parse($request->input('birth_date'))->format('Y-m-d H:i:s');
@@ -28,6 +29,7 @@ class RegisterVolunteer extends Controller
             'vol_birth_date' => $birth_date,
             'vol_address' => $request->input('address'),
             'vol_email' => $request->input('email'),
+            'vol_occupation' => $request->input('occupation'),
         ]);
 
         $user = User::create([
@@ -40,6 +42,6 @@ class RegisterVolunteer extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('dashboardSchool');
+        return redirect()->route('dashboardVolunteer');
     }
 }

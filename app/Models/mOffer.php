@@ -2,31 +2,36 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class mVolunteer extends Model
+class mOffer extends Model
 {
     use HasFactory;
     use SoftDeletes;
     protected $dates = ['deleted_at'];
-    protected $table = 'volunteer';
-    protected $primaryKey = 'id_volunteer';
+    protected $table = 'offer';
+    protected $primaryKey = 'id_offer';
     protected $fillable = [
-        'vol_name',
-        'vol_phone_no',
-        'vol_birth_date',
-        'vol_address',
-        'vol_email',
-        'vol_occupation',
+        'id_volunteer',
+        'id_request',
+        'offer_remarks',
+        'offer_amount',
+        'offer_date',
+        'offer_status',
     ];
 
     public function getUpdatedAtAttribute()
     {
         return \Carbon\Carbon::parse($this->attributes['updated_at'])
             ->diffForHumans();
+    }
+
+    public function getAgeAttribute()
+    {
+        return Carbon::parse($this->attributes['vol_birth_date'])->age;
     }
 
     public function scopeWhereLike($query, $column, $value)

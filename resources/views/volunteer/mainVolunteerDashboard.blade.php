@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="{{asset('admin/plugins/fontawesome-free/css/all.min.css')}}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{asset('admin/dist/css/adminlte.min.css')}}">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{asset('admin/plugins/select2/css/select2.min.css')}}">
+    <link rel="stylesheet" href="{{asset('admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
     <!-- DataTables -->
     <link rel="stylesheet" href="{{asset('admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
     <link rel="stylesheet" href="{{asset('admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
@@ -31,7 +34,6 @@
             </li>
         </ul>
 
-        <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
@@ -43,7 +45,6 @@
                               document.getElementById('logout-form').submit();">
                         {{ __('Logout') }}
                     </a>
-
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>
@@ -68,26 +69,26 @@
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-item menu-open">
-{{--                        <a href="#" class="nav-link active">--}}
-{{--                            <i class="nav-icon far fa-plus-square"></i>--}}
-{{--                            <p>--}}
-{{--                                Extras--}}
-{{--                                <i class="fas fa-angle-left right"></i>--}}
-{{--                            </p>--}}
-{{--                        </a>--}}
+                        {{--                        <a href="#" class="nav-link active">--}}
+                        {{--                            <i class="nav-icon far fa-plus-square"></i>--}}
+                        {{--                            <p>--}}
+                        {{--                                Extras--}}
+                        {{--                                <i class="fas fa-angle-left right"></i>--}}
+                        {{--                            </p>--}}
+                        {{--                        </a>--}}
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('dashboardSchool')}}" class="nav-link">
+                                <a href="{{route('dashboardVolunteer')}}" class="nav-link active">
                                     <i class="fa fa-home nav-icon"></i>
-                                    <p>School</p>
+                                    <p>Dashboard Volunteer</p>
                                 </a>
                             </li>
                         </ul>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('manageUsers')}}" class="nav-link active">
-                                    <i class="fa fa-user nav-icon"></i>
-                                    <p>Users</p>
+                                <a href="{{route('viewOffersVolunteer')}}" class="nav-link">
+                                    <i class="fa fa-hand-holding nav-icon"></i>
+                                    <p>Offers</p>
                                 </a>
                             </li>
                         </ul>
@@ -110,7 +111,7 @@
         <div class="float-right d-none d-sm-block">
             <b>School Help</b> 2022
         </div>
-{{--        <strong>School Help 2022</strong>--}}
+        {{--        <strong>School Help 2022</strong>--}}
     </footer>
 
     <!-- Control Sidebar -->
@@ -127,8 +128,8 @@
 <script src="{{asset('admin/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('admin/dist/js/adminlte.min.js')}}"></script>
-
-
+<!-- Select2 -->
+<script src="{{asset('admin/plugins/select2/js/select2.full.min.js')}}"></script>
 <!-- DataTables  & Plugins -->
 <script src="{{asset('admin/plugins/datatables/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
@@ -157,6 +158,23 @@
             "autoWidth": false,
             "responsive": true,
         });
+        $('#example3').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+        });
+
+        //Initialize Select2 Elements
+        $('.select2').select2()
+
+        //Initialize Select2 Elements
+        $('.select2bs4').select2({
+            theme: 'bootstrap4'
+        })
     });
 </script>
 

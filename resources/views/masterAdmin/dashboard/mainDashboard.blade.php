@@ -76,7 +76,7 @@
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <a href="{{route('dashboardSchool')}}" class="nav-link active">
-                                    <i class="far fa-circle nav-icon"></i>
+                                    <i class="fa fa-home nav-icon"></i>
                                     <p>School</p>
                                 </a>
                             </li>
@@ -84,7 +84,7 @@
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <a href="{{route('manageUsers')}}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
+                                    <i class="fa fa-user nav-icon"></i>
                                     <p>Users</p>
                                 </a>
                             </li>

@@ -50,7 +50,15 @@ class LoginController extends Controller
 
         $guard= Auth::guard()->attempt(array($type=>$request->get('email'),'password'=>$request->get('password')),$request->boolean('remember'));
         if ($guard){
-            return redirect()->route('dashboardSchool');
+            if (Auth::user()->level_user === 'master_admin'){
+                return redirect()->route('dashboardSchool');
+            }
+            else if (Auth::user()->level_user === 'school_admin'){
+                return redirect()->route('requestSchool');
+            }
+            else if (Auth::user()->level_user === 'volunteer'){
+                return redirect()->route('dashboardVolunteer');
+            }
         }
         else{
             return redirect()->back()->withErrors(['msg' => 'Account not exist / password is wrong']);;

@@ -20,6 +20,7 @@ class Volunteer extends Migration
             $table->dateTime('vol_birth_date');
             $table->string('vol_address');
             $table->string('vol_email');
+            $table->string('vol_occupation');
             $table->timestamps();
             $table->softDeletes();
         });

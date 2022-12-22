@@ -64,6 +64,7 @@ class RegisterController extends Controller
             'phone' => ['required', 'string'],
             'birth_date' => ['required', 'string'],
             'address' => ['required', 'string'],
+            'occupation' => ['required', 'string'],
         ]);
     }
 
